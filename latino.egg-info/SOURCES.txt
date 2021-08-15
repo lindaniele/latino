@@ -1,0 +1,10 @@
+LICENSE
+README.md
+setup.py
+latino/__init__.py
+latino/latino.py
+latino.egg-info/PKG-INFO
+latino.egg-info/SOURCES.txt
+latino.egg-info/dependency_links.txt
+latino.egg-info/requires.txt
+latino.egg-info/top_level.txt
