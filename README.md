@@ -21,7 +21,8 @@ pip3 install latino
 from latino import lat_ita
 
 # restituisce una lista di risultati sotto forma di dizionari
-# in questo caso puella ha solo un possibile significato
+# in questo caso puella ha solo un possibile significato 
+# (la lista conterrà quindi un dizionario)
 print(lat_ita("puella"))
 ```
 Output:
@@ -44,19 +45,19 @@ Output:
 ```python
 import latino
 
-# traduce da italiano a latino
+# traduce da latino a italiano
 latino.lat_ita("puella")
 
-# translates from english to latin
+# translates from latin to english
 latino.lat_eng("puella")
 
-# traduit du français vers le latin
+# traduit du latin vers le français
 latino.lat_fra("puella")
 ```
 ```python
 from latino import lat_ita
 
-puella = lat_ita[0]
+puella = lat_ita('puella')[0]
 
 paradigma = puella['paradigma']
 traduzione = puella['traduzione']

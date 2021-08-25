@@ -6,16 +6,16 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='latino',
-    version='0.0.3',
+    version='0.0.5',
     author="Daniele Lin",
     author_email="lindaniele25@gmail.com",
     license="MIT",
-    description="Traduttore Latino: lemma, paradigma, grammatica e traduzione.",
+    description="Traduttore Latino: lemma, paradigma, grammatica e traduzione da Dizionario Olivetti ©.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/lindaniele",
+    url="https://github.com/lindaniele/latino",
     packages=setuptools.find_packages(),
-    keywords=['latino', 'dizionario', 'olivetti', 'traduttore', 'latin', 'paradigma', 'traduzione'],
+    keywords=['latino', 'dizionario', 'olivetti', 'traduttore', 'latin', 'paradigma', 'traduzione', 'translator', 'translate', 'latinum', 'paradigm', 'grammar'],
     classifiers=[
         "Programming Language :: Python :: 3.8",
         "License :: OSI Approved :: MIT License",

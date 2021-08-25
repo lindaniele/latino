@@ -5,14 +5,12 @@ from re import sub
 
 def latin(link, lang) -> list[dict]:
     # Request and search translation on online dictionary Olivetti
-    soup = BeautifulSoup(
-        requests.get(link).text, 'lxml'
-    )
+    soup = BeautifulSoup(requests.get(link).text, 'lxml')
 
     # If there's only one definition
-    if find := soup.find_all('span', class_=lang):
-        result = {i['class'][0]: i.text for i in soup.find('div', id='myth').findAll('span') if i['class'] != [lang]}
-        result['traduzione'] = ', '.join(sub(r'\(.*\) ', '', span.text) for span in find).split(', ')
+    if find := soup.find('div', id='myth'):
+        result = {i['class'][0]: i.text for i in find.find_all('span', class_=['grammatica', 'lemma', 'paradigma'])}
+        result['traduzione'] = ', '.join(sub(r'\(.*\) ', '', span.text) for span in find.find_all('span', class_=lang)).split(', ')
         return [result]
 
     # If there are multiple definitions
