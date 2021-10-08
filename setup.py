@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='latino',
-    version='0.0.5',
+    version='0.0.7',
     author="Daniele Lin",
     author_email="lindaniele25@gmail.com",
     license="MIT",
@@ -26,4 +26,5 @@ setuptools.setup(
         'bs4',
         'requests',
     ],
+    python_requires=">=3.8",
 )
