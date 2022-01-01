@@ -62,7 +62,7 @@ sostantivo femminile  I declinazione
                              'Abl.puellā',
                              'Voc.puellă']}}
 ```
-##
+###
 ```python
 from latino import Translator
 
@@ -75,7 +75,7 @@ for translated in tr.translate("es"):
 ```
     to eat
     to be
-##
+###
 ```python
 from latino import Translator
 translator = Translator("fr") 
@@ -96,7 +96,7 @@ for i in translator.translate(text.split()):
 **Members:**
 * **grammatica** - grammar
 * **lemma** - lemma
-* **paradigma** - paradigm
+* **paradigma** - paradigm (might not exist)
 * **traduzione** - list of translations
 
 **table()**\
