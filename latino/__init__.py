@@ -1,3 +1,6 @@
-from latino.latino import lat_eng, lat_fra, lat_ita
+__all__ = "Translator",
+__version__ = "0.1.1"
 
-__all__ = ['lat_eng', 'lat_fra', 'lat_ita']
+
+from latino.client import Translator
+from latino.constants import LANGUAGES

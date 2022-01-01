@@ -1,67 +1,115 @@
 # Latino
 
-Latino è una libreria Python per tradurre il latino, scritta da [lindaniele](https://github.com/lindaniele).\
-Latino is a python library which helps you translating from latin.
+Latino è una libreria python che traduce dal latino usando il [Dizionario Latino](https://www.dizionario-latino.com/).
 
-## Installazione | Installation
+Latino is a python library that translates latin text by making requests to the [Online Latin Dictionary](https://www.dizionario-latino.com/).
 
-Usa [pip](https://pip.pypa.io/en/stable/) package manager per installare latino.
+Written for Python 3.8+.
+
 
 ```bash
 pip install latino
 ```
-||
-```bash
-pip3 install latino
-```
 
-## Utilizzo | Usage
 
+## latino.Translator
+You have to create an instance of _Translator_ to use this API
+
+**Parameters:**
+- **lang** - language to be translated to 
+- ~~**settings**~~ (available from the next releases)
+
+**translate**(text, **kwargs)\
+Translate text from latin to destination language\
+* **Parameters:**
+  * **text** (str; string sequence) - The latin source text(s) to be translated.
+* **Return type:** list[Translated]
+* **Return type:** list[list[Translated]] (when a list is passed)
+
+Basic usage:
 ```python
-from latino import lat_ita
+>>> from latino import Translator
+>>> translator = Translator()  # lang="it" (italian default)
 
-# restituisce una lista di risultati sotto forma di dizionari
-# in questo caso puella ha solo un possibile significato 
-# (la lista conterrà quindi un dizionario)
-print(lat_ita("puella"))
+>>> # translator.translate returns a list of all possible translations
+>>> puella = translator.translate("puella")[0]  # let's get the first result
+
+>>> puella.lemma
+pŭella
+
+>>> puella.grammatica
+sostantivo femminile  I declinazione
+
+>>> puella.paradigma # might not exist
+[puellă], puellae
+
+>>> puella.traduzione
+['bambina', 'ragazza', 'fanciulla', 
+ 'amante', 'donna amata', 'sposa', 
+ 'giovane donna', 'figlia', 'schiava']
+
+>>> puella.table()
+{'FEMMINILE': {'PLURALE': ['Nom.puellae',
+                           'Gen.puellārum',
+                           'Dat.puellis',
+                           'Acc.puellas',
+                           'Abl.puellis',
+                           'Voc.puellae'],
+               'SINGOLARE': ['Nom.puellă',
+                             'Gen.puellae',
+                             'Dat.puellae',
+                             'Acc.puellam',
+                             'Abl.puellā',
+                             'Voc.puellă']}}
 ```
-Output:
+##
 ```python
-[
-    {
-        'grammatica': 'sostantivo femminile  I declinazione',
+from latino import Translator
 
-        'lemma': 'pŭella',
+# Translator() takes as arg a lang between "it"/"en"/"fr"
+tr = Translator("en") 
 
-        'paradigma': '[puellă], puellae',  # se c'è
-
-        'traduzione': ['bambina', 'ragazza', 'fanciulla', 
-                       'amante', 'donna amata', 'sposa', 
-                       'giovane donna', 'figlia', 'schiava']
-     }
-]
+# Gonna print possible meaning for "es"
+for translated in tr.translate("es"):
+    print(translated.traduzione[0])
 ```
-#### Altri esempi:
+    to eat
+    to be
+##
 ```python
-import latino
+from latino import Translator
+translator = Translator("fr") 
 
-# traduce da latino a italiano
-latino.lat_ita("puella")
-
-# translates from latin to english
-latino.lat_eng("puella")
-
-# traduit du latin vers le français
-latino.lat_fra("puella")
+text = "pulchram puellam sum"
+# any string sequence such as list can also be taken as argument!
+for i in translator.translate(text.split()):
+    print(i[0].paradigma)
 ```
+    [pulcher], pulchră, pulchrum
+    [puellă], puellae
+    [sum], es, esse, fui
+
+## latino.models
+
+### latino.models.**Translated**
+
+**Members:**
+* **grammatica** - grammar
+* **lemma** - lemma
+* **paradigma** - paradigm
+* **traduzione** - list of translations
+
+**table()**\
+Returns the Declension table or the Conjugation table 
+
+## latino.LANGUAGES
 ```python
-from latino import lat_ita
-
-puella = lat_ita('puella')[0]
-
-paradigma = puella['paradigma']
-traduzione = puella['traduzione']
+# languages which can be translated from
+LANGUAGES = {
+    'it': 'italiano', 
+    'en': 'english', 
+    'fr': 'francais'
+ }
 ```
-
 ## Licenza | License
 [MIT](https://choosealicense.com/licenses/mit/)

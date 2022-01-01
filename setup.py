@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='latino',
-    version='0.0.7',
+    version='0.1.1',
     author="Daniele Lin",
     author_email="lindaniele25@gmail.com",
     license="MIT",
@@ -15,7 +15,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/lindaniele/latino",
     packages=setuptools.find_packages(),
-    keywords=['latino', 'dizionario', 'olivetti', 'traduttore', 'latin', 'paradigma', 'traduzione', 'translator', 'translate', 'latinum', 'paradigm', 'grammar'],
+    keywords=['latino', 'dizionario', 'olivetti', 'traduttore', 'latin', 'paradigma', 'traduzione', 'translator', 'translate', 'latinum', 'paradigm', 'grammar', 'api'],
     classifiers=[
         "Programming Language :: Python :: 3.8",
         "License :: OSI Approved :: MIT License",
