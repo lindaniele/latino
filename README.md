@@ -20,7 +20,7 @@ You have to create an instance of _Translator_ to use this API
 - ~~**settings**~~ (available from the next releases)
 
 **translate**(text, **kwargs)\
-Translate text from latin to destination language\
+Translate text from latin to destination language
 * **Parameters:**
   * **text** (str; string sequence) - The latin source text(s) to be translated.
 * **Return type:** list[Translated]
@@ -69,7 +69,7 @@ from latino import Translator
 # Translator() takes as arg a lang between "it"/"en"/"fr"
 tr = Translator("en") 
 
-# Gonna print possible meaning for "es"
+# Gonna print possible meanings for "es"
 for translated in tr.translate("es"):
     print(translated.traduzione[0])
 ```
